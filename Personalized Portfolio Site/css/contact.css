@@ -1,0 +1,172 @@
+/* ============================================================
+   contact.css — Contact as a single torn-edge notebook page,
+   ring-bound (holes down the left margin), ruled lines, resting on
+   a solid black backdrop. Just the "leave a note" form — no note/
+   bio section. Torn edge = SVG turbulence filter (#paper-tear,
+   defined inline in contact.html) applied to the paper layer only,
+   so the text itself stays crisp.
+   ============================================================ */
+
+@font-face {
+  font-family: "Thebestfont";
+  src: url("../assets/fonts/ThebestfontRegular.otf") format("opentype");
+  font-weight: normal; font-style: normal; font-display: swap;
+}
+
+.contact-paper {
+  --paper:      #efe6d2;
+  --rule:       rgba(72, 108, 140, 0.28);   /* pale-blue notebook rule */
+  --ink:        #332c1e;
+  --ink-soft:   #6b6250;
+  --ink-faint:  #9a9078;
+  --accent:     #c07d1e;
+  --accent-deep:#a5661a;
+  --hole:       #17140e;
+  --back:       #b9aee0;
+  --back-hover: #ffffff;
+
+  --line: 34px;   /* rule spacing == text line-height so writing sits on lines */
+  --hand: "Thebestfont", "Segoe Script", cursive;
+  --ui: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body.contact-paper {
+  margin: 0;
+  min-height: 100vh;
+  background: #000;
+  color: var(--ink);
+  font-family: var(--ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Back-to-the-room escape hatch (matches the app pages) */
+.paper-back {
+  position: fixed; top: 18px; left: 20px; z-index: 20;
+  display: inline-flex; align-items: center; gap: 7px;
+  color: var(--back); text-decoration: none; font-size: 13px; opacity: .85;
+  transition: opacity .15s, color .15s;
+}
+.paper-back:hover { opacity: 1; color: var(--back-hover); }
+.paper-back svg { width: 16px; height: 16px; }
+
+/* Desk fills the screen and holds the single page */
+.desk {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 8vh 4vw;
+}
+
+/* The page */
+.book {
+  position: relative;
+  width: min(620px, 94vw);
+}
+
+/* Paper layer: colour + continuous rules, torn at the outer edges.
+   Kept on ::before so the displacement filter never touches the text. */
+.book::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background-color: var(--paper);
+  background-image:
+    repeating-linear-gradient(to bottom, transparent 0 calc(var(--line) - 1px), var(--rule) calc(var(--line) - 1px) var(--line));
+  box-shadow: inset 0 0 90px rgba(150, 120, 70, 0.10);
+  filter: url(#paper-tear) drop-shadow(0 22px 40px rgba(0, 0, 0, 0.65));
+}
+
+/* Ring-binder holes down the left margin */
+.book::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 30px; z-index: 2;
+  width: 14px; pointer-events: none;
+  background-image: radial-gradient(circle, var(--hole) 0 5px, transparent 5.6px);
+  background-repeat: repeat-y;
+  background-size: 14px 68px;
+  background-position: center 30px;
+  opacity: .82;
+}
+
+.page {
+  position: relative; z-index: 3;
+  padding: 56px 54px 60px 76px; /* extra left padding clears the ring holes */
+}
+
+/* ---- The form on the lines ---- */
+.paper-formhead { margin: 0 0 6px; font-family: var(--hand); font-weight: 400; font-size: 42px; color: var(--ink); }
+.paper-sub { margin: 0 0 22px; font-family: var(--ui); font-size: 13px; color: var(--ink-soft); }
+
+.closed-notice { font-family: var(--hand); font-size: 24px; color: var(--ink); margin: 0 0 22px; }
+
+.paper-field { margin: 0 0 16px; }
+.paper-field label {
+  display: block; margin: 0 0 2px; font-family: var(--ui);
+  font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
+}
+.paper-field input, .paper-field textarea {
+  width: 100%; background: transparent; border: 0;
+  padding: 0 2px; font-family: var(--hand); font-size: 23px; color: var(--ink);
+  line-height: var(--line); outline: none; resize: none;
+}
+.paper-field input { height: var(--line); }
+.paper-field input::placeholder, .paper-field textarea::placeholder { color: var(--ink-faint); opacity: .7; }
+.paper-field textarea { min-height: calc(var(--line) * 3); }
+
+.paper-send {
+  display: inline-flex; align-items: center; gap: 9px; margin-top: 10px;
+  padding: 10px 22px; border: 0; border-radius: 7px;
+  background: var(--ink); color: var(--paper);
+  font-family: var(--ui); font-size: 14px; cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,.22); transition: transform .12s ease, opacity .15s;
+}
+.paper-send:hover { transform: translateY(-1px); opacity: .93; }
+.paper-send svg { width: 16px; height: 16px; }
+
+.optional-tag { text-transform: none; letter-spacing: 0; font-size: 10.5px; color: var(--ink-faint); }
+
+.paper-field-label {
+  display: block; margin: 0 0 8px; font-family: var(--ui);
+  font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
+}
+.paper-radio-group { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 4px; }
+.paper-radio {
+  display: inline-flex; align-items: center; cursor: pointer;
+  font-family: var(--hand); font-size: 18px; color: var(--ink-soft);
+  padding: 7px 16px; border: 1.6px solid var(--ink-faint); border-radius: 20px;
+  transition: border-color .12s, background-color .12s, color .12s;
+  -webkit-user-select: none; user-select: none;
+}
+.paper-radio input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.paper-radio:has(input:checked) {
+  border-color: var(--accent-deep);
+  background: rgba(165, 102, 26, 0.14);
+  color: var(--ink);
+}
+.paper-radio:has(input:focus-visible) { outline: 2px solid var(--accent-deep); outline-offset: 2px; }
+.paper-radio:hover { border-color: var(--accent-deep); }
+
+.paper-hs-form { max-width: 100%; }
+
+/* Honeypot — positioned off-screen (not display:none/visibility:hidden,
+   which some bots detect and skip) so it's invisible to real visitors
+   but still fillable by naive bots. */
+.hp-field { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.response-note { margin: 22px 0 0; font-family: var(--ui); font-size: 12px; color: var(--ink-faint); }
+
+.form-status { margin: 12px 0 0; font-family: var(--ui); font-size: 13px; min-height: 1em; }
+.form-status.is-success { color: #3b7a3f; }
+.form-status.is-error { color: #a13b3b; }
+
+/* Applied to #formBody when the availability toggle is off. `inert`
+   (set via JS in contact.html) is what actually blocks clicks/tabbing/
+   screen-readers — this is just the visual grey-out. */
+#formBody.is-closed { filter: grayscale(1); opacity: 0.5; }
+
+/* ---- Responsive ---- */
+@media (max-width: 760px) {
+  .desk { padding: 64px 16px 40px; }
+  .book { width: 100%; max-width: 460px; }
+  .page { padding: 44px 30px 46px 62px; }
+  .book::after { left: 20px; }
+  .paper-formhead { font-size: 36px; }
+}

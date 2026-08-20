@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>design.ai — Design Work — Del Beanlands</title>
+  <meta name="description" content="Design work and assets by Del Beanlands — illustration, branding, and visual assets." />
+  <link rel="canonical" href="https://example.com/design.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Design Work — Del Beanlands" />
+  <meta property="og:description" content="Illustration, branding, and visual assets." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/design.html" />
+  <meta property="og:image" content="https://example.com/assets/img/social-share.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/img/favicon.png" />
+  <link rel="stylesheet" href="css/illustrator.css" />
+</head>
+<body class="ai-app">
+  <div class="ai-window">
+
+    <!-- Menu bar -->
+    <header class="ai-menubar">
+      <a class="ai-logo" href="index.html" title="Back to the room" aria-label="Back to the room">Ai</a>
+      <a class="home-link" href="index.html" title="Back to the room" aria-label="Back to the room">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9"/><path d="M10 20v-5h4v5"/></svg>
+      </a>
+      <nav class="ai-menu" aria-label="Menu">
+        <span>File</span><span>Edit</span><span>Object</span><span>Type</span><span>Select</span><span>Effect</span><span>View</span><span>Window</span><span>Help</span>
+      </nav>
+      <!-- Notification bell: re-opens the "VS Code has updated" popup on demand
+           (e.g. after it's been dismissed). Badge hints an update is waiting. -->
+      <button class="ai-bell" id="vscBell" type="button" title="1 update available" aria-label="Notifications: 1 update available">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+        <span class="ai-bell-badge" aria-hidden="true">1</span>
+      </button>
+      <div class="ai-winctrls" aria-hidden="true">
+        <button class="ai-wc" tabindex="-1" aria-label="Minimize"><svg viewBox="0 0 12 12"><rect x="2" y="5.5" width="8" height="1" fill="currentColor"/></svg></button>
+        <button class="ai-wc" tabindex="-1" aria-label="Maximize"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"><rect x="2.5" y="2.5" width="7" height="7"/></svg></button>
+        <button class="ai-wc close" tabindex="-1" aria-label="Close"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M3 3l6 6M9 3l-6 6"/></svg></button>
+      </div>
+    </header>
+
+    <!-- Control / breadcrumb bar -->
+    <div class="ai-controlbar">
+      <div class="ai-breadcrumb"><a href="index.html">Portfolio</a> &rsaquo; <span class="cur">design.ai</span></div>
+      <div class="ai-control-right">
+        <span>Fit&nbsp;·&nbsp;100%</span>
+        <div class="ai-swatch-pair" aria-hidden="true"><span class="s fill"></span><span class="s stroke"></span></div>
+      </div>
+    </div>
+
+    <!-- Document tabs -->
+    <div class="ai-tabs" role="tablist" aria-label="Open documents">
+      <span class="ai-tab active" aria-current="page"><span class="doc-ico" aria-hidden="true">Ai</span>design.ai</span>
+      <a class="ai-tab" id="csTab" href="casestudies.html"><span class="doc-ico" aria-hidden="true">Ai</span>casestudies.ai</a>
+    </div>
+
+    <div class="ai-body">
+
+      <!-- Tools -->
+      <aside class="ai-tools" aria-label="Tools">
+        <button class="ai-tool active" title="Selection (V)" aria-label="Selection"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 8-6 1.4L10 20z"/></svg></button>
+        <button class="ai-tool" title="Direct Selection (A)" aria-label="Direct Selection"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3l14 8-6 1.4L10 20z"/></svg></button>
+        <button class="ai-tool" title="Pen (P)" aria-label="Pen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l4 8-4 3-4-3z"/><path d="M12 14v7"/></svg></button>
+        <button class="ai-tool" title="Type (T)" aria-label="Type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 4h14v3h-5.5v13h-3V7H5z"/></svg></button>
+        <div class="sep"></div>
+        <button class="ai-tool" title="Rectangle (M)" aria-label="Rectangle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="6" width="16" height="12"/></svg></button>
+        <button class="ai-tool" title="Ellipse (L)" aria-label="Ellipse"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="12" cy="12" rx="8" ry="6"/></svg></button>
+        <button class="ai-tool" title="Paintbrush (B)" aria-label="Paintbrush"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20c3 0 4-2 4-4"/><path d="M8 15l8-9a2 2 0 0 1 3 3l-9 8"/></svg></button>
+        <button class="ai-tool" title="Pencil (N)" aria-label="Pencil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1-4L16 5l3 3L8 19z"/></svg></button>
+        <div class="sep"></div>
+        <button class="ai-tool" title="Eyedropper (I)" aria-label="Eyedropper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 7l4 4M5 19l7-7M17 3l4 4-3 3-4-4z"/></svg></button>
+        <button class="ai-tool" title="Hand (H)" aria-label="Hand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 11V6a1.4 1.4 0 0 1 2.8 0v4.5m0-.5V4.6a1.4 1.4 0 0 1 2.8 0V11m0-1V6.2a1.4 1.4 0 0 1 2.8 0V14c0 3-2 5.5-5.6 5.5S8 17.5 8 15v-2"/></svg></button>
+        <button class="ai-tool" title="Zoom (Z)" aria-label="Zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M9 11h4M11 9v4"/></svg></button>
+      </aside>
+
+      <!-- Canvas -->
+      <main class="ai-canvas">
+        <h1 class="ai-doc-title">Design Work</h1>
+        <p class="ai-doc-sub">every project &mdash; toggle a layer to filter</p>
+        <div class="ai-artboards cs" id="csGrid">
+
+          <!-- Assets -->
+          <div class="artboard-wrap cs-section-head hidden" data-cat="assets">
+            <span class="cs-section-title"><span class="cat-dot" style="background:#3ec6a8"></span>Assets</span>
+            <span class="cs-section-desc">Custom design and illustrative work made for other projects on this site.</span>
+          </div>
+          <div class="artboard-wrap hidden" id="asset-pattern" data-cat="assets">
+            <div class="ab-name"><span class="cat-dot" style="background:#3ec6a8"></span>Pattern</div>
+            <a class="artboard" href="assets/Portfolio-Design/Design%20Assets/bgwide.png" target="_blank" rel="noopener"><img class="ab-img" src="assets/Portfolio-Design/covers/illustration.png" alt="Illustrated pattern" loading="lazy" /></a>
+          </div>
+          <div class="artboard-wrap hidden" id="asset-frame" data-cat="assets">
+            <div class="ab-name"><span class="cat-dot" style="background:#3ec6a8"></span>Bio Frame</div>
+            <a class="artboard" href="assets/Portfolio-Design/Design%20Assets/header-bio-frame.png" target="_blank" rel="noopener"><img class="ab-img" src="assets/Portfolio-Design/covers/illus-frame.png" alt="Decorative bio frame" loading="lazy" /></a>
+          </div>
+          <div class="artboard-wrap hidden" id="asset-eyes" data-cat="assets">
+            <div class="ab-name"><span class="cat-dot" style="background:#3ec6a8"></span>Character Eyes</div>
+            <a class="artboard" href="assets/Portfolio-Design/Design%20Assets/2eyes-D-open.png" target="_blank" rel="noopener"><img class="ab-img" src="assets/Portfolio-Design/covers/asset-eyes.png" alt="Character eyes illustration" loading="lazy" /></a>
+          </div>
+
+          <!-- Layouts -->
+          <div class="artboard-wrap cs-section-head hidden" data-cat="layouts">
+            <span class="cs-section-title"><span class="cat-dot" style="background:#5b8cff"></span>Layouts</span>
+            <span class="cs-section-desc">Web and landing page layouts, designed in Figma and Adobe XD (RIP).</span>
+          </div>
+          <div class="artboard-wrap hidden" id="layout-homebase" data-cat="layouts">
+            <div class="ab-name"><span class="cat-dot" style="background:#5b8cff"></span>HomeBase Redesign</div>
+            <a class="artboard" href="assets/Portfolio-Design/Layouts/HomeBase-Redesign.png" target="_blank" rel="noopener"><img class="ab-img" src="assets/Portfolio-Design/covers/layout-homebase.png" alt="HomeBase redesign" loading="lazy" /></a>
+          </div>
+          <div class="artboard-wrap hidden" id="layout-pluto" data-cat="layouts">
+            <div class="ab-name"><span class="cat-dot" style="background:#5b8cff"></span>Pluto &mdash; Landing</div>
+            <a class="artboard" href="assets/Portfolio-Design/Layouts/pluto-lp-highfidFINAL.pdf" target="_blank" rel="noopener"><img class="ab-img" src="assets/Portfolio-Design/covers/layouts.png" alt="Pluto landing page" loading="lazy" /></a>
+          </div>
+          <div class="artboard-wrap hidden" id="layout-beauty" data-cat="layouts">
+            <div class="ab-name"><span class="cat-dot" style="background:#5b8cff"></span>First Landing Page &mdash; Beauty Clinic</div>
+            <a class="artboard" href="assets/Portfolio-Design/Layouts/first_lnading_page-beauty_clinic.png" target="_blank" rel="noopener"><img class="ab-img" src="assets/Portfolio-Design/covers/layout-beauty.png" alt="First landing page — Beauty Clinic" loading="lazy" /></a>
+          </div>
+          <div class="artboard-wrap hidden cs-item" id="layout-secondchance" data-cat="layouts">
+            <div class="ab-name"><span class="cat-dot" style="background:#5b8cff"></span>Second Chance Landing Page<a class="cs-badge" href="casestudies.html">Case Study</a></div>
+            <div class="artboard artboard-choice">
+              <img class="ab-img" src="assets/Portfolio-Design/Layouts/second_chance_landingpage-case_study.png" alt="Second Chance landing page — case study" loading="lazy" />
+              <div class="ab-choice">
+                <a class="ab-choice-btn" href="assets/Portfolio-Design/Layouts/second_chance_landingpage-case_study.png" target="_blank" rel="noopener">Full Size</a>
+                <a class="ab-choice-btn interactive" href="casestudies.html">Case Study</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Posters -->
+          <div class="artboard-wrap cs-section-head hidden" data-cat="posters">
+            <span class="cs-section-title"><span class="cat-dot" style="background:#ffb238"></span>Posters</span>
+            <span class="cs-section-desc">Created in both InDesign and Illustrator — every asset made by me.</span>
+          </div>
+          <div class="artboard-wrap hidden cs-item" id="poster-skytrain" data-cat="posters">
+            <div class="ab-name"><span class="cat-dot" style="background:#ffb238"></span>SkyTrain Extension<a class="cs-badge" href="casestudies.html">Case Study</a></div>
+            <div class="artboard artboard-choice">
+              <img class="ab-img" src="assets/Portfolio-Design/covers/posters.png" alt="SkyTrain Extension poster — case study" loading="lazy" />
+              <div class="ab-choice">
+                <a class="ab-choice-btn" href="assets/Portfolio-Design/Posters/conference%20poster_Case_Study.pdf" target="_blank" rel="noopener">Full Size</a>
+                <a class="ab-choice-btn interactive" href="casestudies.html">Case Study</a>
+              </div>
+            </div>
+          </div>
+          <div class="artboard-wrap hidden cs-item" id="poster-typeanatomy" data-cat="posters">
+            <div class="ab-name"><span class="cat-dot" style="background:#ffb238"></span>Type Anatomy<a class="cs-badge" href="casestudies.html">Case Study</a></div>
+            <div class="artboard artboard-choice">
+              <img class="ab-img" src="assets/Portfolio-Design/covers/poster-typeanatomy.png" alt="Type Anatomy poster" loading="lazy" />
+              <div class="ab-choice">
+                <a class="ab-choice-btn" href="assets/Portfolio-Design/Posters/type-anatomy-final_PNG_Case_Study.png" target="_blank" rel="noopener">Static</a>
+                <a class="ab-choice-btn interactive" href="https://indd.adobe.com/view/719a87d4-41be-4587-8712-eca6c6460720" target="_blank" rel="noopener">Interactive</a>
+              </div>
+            </div>
+          </div>
+          <div class="artboard-wrap hidden" id="poster-cv" data-cat="posters">
+            <div class="ab-name"><span class="cat-dot" style="background:#ffb238"></span>CV &mdash; Résumé</div>
+            <a class="artboard" href="assets/Portfolio-Design/Posters/CV_Edward_Final.png" target="_blank" rel="noopener"><img class="ab-img" src="assets/Portfolio-Design/covers/poster-cv.png" alt="Résumé / CV layout" loading="lazy" /></a>
+          </div>
+
+          <!-- Logos -->
+          <div class="artboard-wrap cs-section-head hidden" data-cat="logos">
+            <span class="cs-section-title"><span class="cat-dot" style="background:#ff6f61"></span>Logos</span>
+            <span class="cs-section-desc">My earliest explorations in wordmark and icon-based logo design — since put to work across the web projects section (click the update pop-up to see them live!).</span>
+          </div>
+          <div class="artboard-wrap hidden" id="logo-grovergreen" data-cat="logos">
+            <div class="ab-name"><span class="cat-dot" style="background:#ff6f61"></span>Grover Green</div>
+            <a class="artboard" href="assets/Portfolio-Design/Logos/Grover_Green_Logo.png" target="_blank" rel="noopener"><img class="ab-img" src="assets/Portfolio-Design/covers/branding.png" alt="Grover Green logo" loading="lazy" /></a>
+          </div>
+          <div class="artboard-wrap hidden" id="logo-margery" data-cat="logos">
+            <div class="ab-name"><span class="cat-dot" style="background:#ff6f61"></span>Margery Daniels</div>
+            <a class="artboard" href="assets/Portfolio-Design/Logos/Margery_Daniels_Logo.png" target="_blank" rel="noopener"><img class="ab-img" src="assets/Portfolio-Design/covers/brand-pm2.png" alt="Margery Daniels logo" loading="lazy" /></a>
+          </div>
+          <div class="artboard-wrap hidden" id="logo-harjinder" data-cat="logos">
+            <div class="ab-name"><span class="cat-dot" style="background:#ff6f61"></span>Harjinder</div>
+            <a class="artboard" href="assets/Portfolio-Design/Logos/harjinder-logo.png" target="_blank" rel="noopener"><img class="ab-img" src="assets/Portfolio-Design/covers/brand-pm3.png" alt="Harjinder logo" loading="lazy" /></a>
+          </div>
+          <div class="artboard-wrap hidden" id="logo-miracles" data-cat="logos">
+            <div class="ab-name"><span class="cat-dot" style="background:#ff6f61"></span>Miracles</div>
+            <a class="artboard" href="assets/Portfolio-Design/Logos/miracles_logo.png" target="_blank" rel="noopener"><img class="ab-img" src="assets/Portfolio-Design/covers/logo-miracles.png" alt="Miracles logo" loading="lazy" /></a>
+          </div>
+
+          <p class="cs-empty" id="csEmpty">Oh no, no layers are active! Find the Layers panel <span aria-hidden="true">&rarr;</span> and toggle what you want to see.</p>
+        </div>
+      </main>
+
+      <!-- Panels -->
+      <aside class="ai-panels" aria-label="Panels">
+        <div class="ai-panel">
+          <div class="ai-panel-title">Layers</div>
+          <div class="ai-panel-body">
+            <div class="layer-folder" id="allProjects">
+              <div class="layer-row folder off">
+                <svg class="fold-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4z"/></svg>
+                <button class="eye-toggle" data-all type="button" aria-pressed="true" aria-label="Toggle all projects">
+                  <svg class="eye eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.5"/></svg>
+                  <svg class="eye eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13s3.5 5 9 5 9-5 9-5"/></svg>
+                </button>
+                <svg class="folder-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h6l2 2h10v12a1 1 0 0 1-1 1H3z"/></svg>
+                <span class="layer-name">All Projects</span>
+              </div>
+              <div class="layer-children">
+                <div class="layer-row child off" data-cat="assets">
+                  <button class="eye-toggle" type="button" aria-pressed="true" aria-label="Toggle Assets visibility">
+                    <svg class="eye eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.5"/></svg>
+                    <svg class="eye eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13s3.5 5 9 5 9-5 9-5"/></svg>
+                  </button>
+                  <span class="layer-chip" style="background:#3ec6a8"></span><span class="layer-name">Assets</span>
+                </div>
+                <div class="layer-row child off" data-cat="layouts">
+                  <button class="eye-toggle" type="button" aria-pressed="true" aria-label="Toggle Layouts visibility">
+                    <svg class="eye eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.5"/></svg>
+                    <svg class="eye eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13s3.5 5 9 5 9-5 9-5"/></svg>
+                  </button>
+                  <span class="layer-chip" style="background:#5b8cff"></span><span class="layer-name">Layouts</span>
+                </div>
+                <div class="layer-row child off" data-cat="posters">
+                  <button class="eye-toggle" type="button" aria-pressed="true" aria-label="Toggle Posters visibility">
+                    <svg class="eye eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.5"/></svg>
+                    <svg class="eye eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13s3.5 5 9 5 9-5 9-5"/></svg>
+                  </button>
+                  <span class="layer-chip" style="background:#ffb238"></span><span class="layer-name">Posters</span>
+                </div>
+                <div class="layer-row child off" data-cat="logos">
+                  <button class="eye-toggle" type="button" aria-pressed="true" aria-label="Toggle Logos visibility">
+                    <svg class="eye eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.5"/></svg>
+                    <svg class="eye eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13s3.5 5 9 5 9-5 9-5"/></svg>
+                  </button>
+                  <span class="layer-chip" style="background:#ff6f61"></span><span class="layer-name">Logos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ai-panel">
+          <div class="ai-panel-title">Swatches</div>
+          <div class="ai-panel-body">
+            <div class="swatches" aria-hidden="true">
+              <i style="background:#1a1a1a"></i><i style="background:#ffffff"></i><i style="background:#ff6f61"></i><i style="background:#ffb238"></i><i style="background:#ffd23f"></i><i style="background:#3ec6a8"></i><i style="background:#5b8cff"></i><i style="background:#c78bff"></i><i style="background:#ff8ac2"></i><i style="background:#7a5cff"></i>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Status bar -->
+    <footer class="ai-status">
+      <span>design.ai @ 100%</span>
+      <span class="right"><span id="csCount">14 artboards</span><span>RGB</span><span>Illustrator</span></span>
+    </footer>
+
+  </div>
+
+  <!-- ============================================================
+       Mock Windows "VS Code has updated" system notification.
+       Surfaces ~10s after landing on this page (see script below)
+       and, when clicked, carries the visitor into the VS Code web
+       section. Decorative chrome (app name, icon, timestamp) is
+       aria-hidden; the update itself is a real, labelled link.
+       Styles live in css/illustrator.css (.sys-toast*).
+       ============================================================ -->
+  <div class="sys-toast" id="vscodeUpdateToast" role="alertdialog"
+       aria-labelledby="vscToastTitle" aria-describedby="vscToastMsg" aria-hidden="true">
+    <div class="sys-toast-head">
+      <span class="sys-toast-app" aria-hidden="true">Visual Studio Code</span>
+      <button class="sys-toast-dismiss" type="button" id="vscToastDismiss" aria-label="Dismiss notification">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 3l6 6M9 3l-6 6"/></svg>
+      </button>
+    </div>
+
+    <a class="sys-toast-body" href="web_projects.html">
+      <span class="sys-toast-icon" aria-hidden="true">
+        <!-- VS Code logo -->
+        <svg viewBox="0 0 254 254" xmlns="http://www.w3.org/2000/svg">
+          <mask id="vscMask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="254" height="254">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M180.828 252.605c3.998 1.557 8.556 1.457 12.596-.493l50.716-24.394A17.007 17.007 0 0 0 253.75 212.4V41.598a17.007 17.007 0 0 0-9.61-15.318L193.424 1.887c-5.298-2.552-11.52-1.927-16.181 1.567a16.99 16.99 0 0 0-2.045 1.837L77.612 94.63 34.699 62.058a11.342 11.342 0 0 0-14.485.643L6.649 75.011c-4.526 4.117-4.531 11.25-.01 15.373L43.869 124 6.639 157.616c-4.521 4.123-4.516 11.256.01 15.373l13.565 12.31a11.342 11.342 0 0 0 14.485.643l42.913-32.572 97.586 89.339a16.98 16.98 0 0 0 5.13 3.296l.5.2Zm10.647-183.756L117.362 124l74.113 55.151V68.849Z" fill="#fff"/>
+          </mask>
+          <g mask="url(#vscMask)">
+            <path d="M244.14 26.28L193.377 1.85C187.5-.98 180.474.213 175.855 4.832L6.582 159.157c-4.526 4.123-4.52 11.256.01 15.373l13.565 12.31a11.342 11.342 0 0 0 14.485.643L238.987 32.61c6.837-5.19 16.648-.315 16.648 8.267v-.601a17.006 17.006 0 0 0-11.495-13.997Z" fill="#0065A9"/>
+            <path d="M244.14 227.72l-50.763 24.43c-5.877 2.83-12.903 1.637-17.522-2.982L6.582 94.844c-4.526-4.124-4.52-11.257.01-15.374l13.565-12.31a11.342 11.342 0 0 1 14.485-.643L238.987 221.39c6.837 5.19 16.648.315 16.648-8.267v.601a17.006 17.006 0 0 1-11.495 13.997Z" fill="#007ACC"/>
+            <path d="M193.379 252.152c-5.878 2.828-12.904 1.635-17.523-2.985 5.688 5.689 15.42 1.662 15.42-6.383V11.216c0-8.045-9.732-12.072-15.42-6.384 4.619-4.62 11.645-5.812 17.523-2.984l50.755 24.4a17.007 17.007 0 0 1 9.622 15.335v170.804a17.007 17.007 0 0 1-9.622 15.334l-50.755 24.431Z" fill="#1F9CF0"/>
+          </g>
+        </svg>
+      </span>
+      <span class="sys-toast-text">
+        <span class="sys-toast-title" id="vscToastTitle">VS Code has updated</span>
+        <span class="sys-toast-msg" id="vscToastMsg">A new version is ready. Restart to see what&rsquo;s new &mdash; now with web projects.</span>
+        <span class="sys-toast-time" aria-hidden="true">now</span>
+      </span>
+    </a>
+
+    <div class="sys-toast-actions">
+      <a class="sys-toast-btn primary" href="web_projects.html">Restart to Update</a>
+      <button class="sys-toast-btn" type="button" id="vscToastLater">Later</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var toast = document.getElementById('vscodeUpdateToast');
+      if (!toast) return;
+
+      var DELAY = 10000; // ~10 seconds on the page before the update surfaces
+
+      function showToast() {
+        toast.classList.remove('hide');
+        toast.classList.add('show');
+        toast.setAttribute('aria-hidden', 'false');
+      }
+      function hideToast() {
+        toast.classList.remove('show');
+        toast.classList.add('hide');
+        toast.setAttribute('aria-hidden', 'true');
+      }
+      function toggleToast() {
+        if (toast.classList.contains('show')) hideToast();
+        else showToast();
+      }
+
+      setTimeout(showToast, DELAY);
+
+      var bell = document.getElementById('vscBell');
+      var dismiss = document.getElementById('vscToastDismiss');
+      var later = document.getElementById('vscToastLater');
+      if (bell) bell.addEventListener('click', toggleToast);
+      if (dismiss) dismiss.addEventListener('click', hideToast);
+      if (later) later.addEventListener('click', hideToast);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && toast.classList.contains('show')) hideToast();
+      });
+    })();
+  </script>
+
+  <script>
+    /* "All Projects" layer filtering — toggle a category's visibility. */
+    (function () {
+      var cats = ['assets', 'layouts', 'posters', 'logos'];
+      function wraps(cat) { return Array.prototype.slice.call(document.querySelectorAll('.artboard-wrap[data-cat="' + cat + '"]')); }
+      function childRow(cat) { return document.querySelector('.layer-row.child[data-cat="' + cat + '"]'); }
+      function isOn(cat) { var r = childRow(cat); return r && !r.classList.contains('off'); }
+
+      function refreshMeta() {
+        var noneOn = !cats.some(isOn);
+        var folderRow = document.querySelector('.layer-row.folder');
+        var allBtn = document.querySelector('.eye-toggle[data-all]');
+        if (folderRow) folderRow.classList.toggle('off', noneOn);
+        if (allBtn) allBtn.setAttribute('aria-pressed', noneOn ? 'false' : 'true');
+        var visible = document.querySelectorAll('.artboard-wrap:not(.hidden)').length;
+        var empty = document.getElementById('csEmpty');
+        if (empty) empty.style.display = visible ? 'none' : 'block';
+        var count = document.getElementById('csCount');
+        if (count) count.textContent = visible + (visible === 1 ? ' artboard' : ' artboards');
+      }
+
+      function setCat(cat, on) {
+        wraps(cat).forEach(function (w) { w.classList.toggle('hidden', !on); });
+        var r = childRow(cat);
+        if (r) {
+          r.classList.toggle('off', !on);
+          var b = r.querySelector('.eye-toggle');
+          if (b) b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        }
+        refreshMeta();
+      }
+
+      document.querySelectorAll('.layer-row.child').forEach(function (row) {
+        var cat = row.getAttribute('data-cat');
+        row.querySelector('.eye-toggle').addEventListener('click', function (e) {
+          e.stopPropagation();
+          setCat(cat, row.classList.contains('off'));
+        });
+        row.querySelector('.layer-name').addEventListener('click', function () {
+          document.querySelectorAll('.layer-row').forEach(function (r) { r.classList.remove('sel'); });
+          row.classList.add('sel');
+          if (!isOn(cat)) setCat(cat, true);
+          var first = wraps(cat)[0];
+          if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      });
+
+      var allBtn = document.querySelector('.eye-toggle[data-all]');
+      if (allBtn) allBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var anyOn = cats.some(isOn);
+        cats.forEach(function (c) { setCat(c, !anyOn); });
+      });
+
+      var folder = document.getElementById('allProjects');
+      if (folder) {
+        var chev = folder.querySelector('.fold-chevron');
+        if (chev) chev.addEventListener('click', function (e) { e.stopPropagation(); folder.classList.toggle('collapsed'); });
+      }
+
+      // Sync each toggle's pressed state to its initial (off) class
+      cats.forEach(function (c) {
+        var r = childRow(c), b = r && r.querySelector('.eye-toggle');
+        if (b) b.setAttribute('aria-pressed', r.classList.contains('off') ? 'false' : 'true');
+      });
+
+      var params = new URLSearchParams(location.search);
+      var focus = params.get('focus');
+      var piece = params.get('piece');
+      if (focus && cats.indexOf(focus) >= 0) {
+        cats.forEach(function (c) { setCat(c, c === focus); });
+        var sel = childRow(focus);
+        if (sel) { document.querySelectorAll('.layer-row').forEach(function (r) { r.classList.remove('sel'); }); sel.classList.add('sel'); }
+      }
+      if (piece) {
+        var el = document.getElementById(piece);
+        if (el) {
+          var a = el.querySelector('.artboard');
+          if (a) a.classList.add('hl');
+          setTimeout(function () { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 120);
+        }
+      }
+      refreshMeta();
+
+      // Case-studies tab: gently pulse after a while to invite a look.
+      var csTab = document.getElementById('csTab');
+      if (csTab) {
+        var pulseTimer = setTimeout(function () { csTab.classList.add('attn'); }, 12000);
+        ['pointerenter', 'click', 'focus'].forEach(function (ev) {
+          csTab.addEventListener(ev, function () { clearTimeout(pulseTimer); csTab.classList.remove('attn'); });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
