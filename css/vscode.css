@@ -232,6 +232,11 @@ body.vscode {
 .case-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 22px; }
 .case-tag { font-family: var(--mono); font-size: 11px; color: var(--vsc-muted); background: #201f3d; border: 1px solid var(--vsc-border); border-radius: 20px; padding: 4px 11px; }
 
+/* Tech-stack pills: a second, separate row of .case-tag pills below the
+   bio text, labeled to distinguish "what tools built this" from the
+   thematic tags above it. */
+.tech-tags-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--vsc-faint); margin: 0 0 8px; }
+
 .case-actions { display: flex; gap: 14px; flex-wrap: wrap; margin: 0 0 34px; }
 .case-btn { font-family: var(--hand); font-size: 17px; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 1px solid var(--vsc-border); color: var(--vsc-text); transition: border-color 0.15s, background 0.15s; }
 .case-btn:hover { border-color: var(--accent); background: #2a2850; }
