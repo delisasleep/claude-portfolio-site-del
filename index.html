@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       SEO  ·  Edit the copy in each page's meta tags.
+       Replace https://example.com with your real domain everywhere.
+       ============================================================ -->
+  <title>Del Beanlands — Designer Portfolio</title>
+  <meta name="description" content="Step into the room of designer Del Beanlands. Explore projects, case studies, and design work by clicking around an illustrated space." />
+  <link rel="canonical" href="https://example.com/" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / social sharing (replace image once art is ready) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Del Beanlands — Designer Portfolio" />
+  <meta property="og:description" content="An illustrated, interactive portfolio room. Click around to explore projects, about, and contact." />
+  <meta property="og:url" content="https://example.com/" />
+  <meta property="og:image" content="https://example.com/assets/img/social-share.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/img/favicon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body class="home">
+
+  <!-- Skip link for keyboard / screen-reader users (accessibility + SEO) -->
+  <a class="skip-link" href="#room">Skip to room navigation</a>
+
+  <!-- Visually-hidden H1 so the page has a real heading for SEO/screen readers,
+       without covering your artwork. -->
+  <h1 class="visually-hidden">Del Beanlands — Designer Portfolio. Explore the room to navigate.</h1>
+
+  <main>
+    <!--
+      ROOM STAGE
+      - #room fills the viewport. #room-canvas is the thing that's actually
+        sized/positioned — room.js resizes it every load/resize so the whole
+        room always fits the viewport at its ORIGINAL aspect ratio (no
+        cropping). Leftover space on the sides/top is just the page's plain
+        background color, no blurred filler image. Everything inside
+        #room-canvas (room art, hover art) is width:100%/height:100% of
+        that canvas, so it all scales together.
+      - #room-base is the sharp room (usemap hooks the clickable areas).
+        room_base.png is Del's single flattened room art — no day/night
+        layers anymore (the earlier shade-ambient.png/glow-lamp.png overlay
+        system was removed when Del consolidated back down to just 2 base
+        images: the room and the lights).
+      - lights.png is layered on top of the room art so it can carry the CSS
+        twinkle animation independently — sits above room_base.png so the
+        pulse reads clearly.
+      - Each hotspot hover is a single clipped crop of hover-art.png — Del's
+        finished hover art (colored shape + hand-written label baked in
+        together: purple "Portfolio" box, cyan "Contact" bracket + arrow).
+        Same image, two <img> tags, each clipped in CSS to its own hotspot
+        rectangle and faded in on hover. Bed has no hover treatment right
+        now (Del asked to remove it) — the hotspot is still clickable, just
+        no hover visual.
+      - On mobile, .home-stage becomes a horizontal scroller instead — the
+        room fills the screen height and the visitor swipes across it
+        (room.js's resize logic is skipped below 641px so it doesn't fight
+        with that).
+      - #rotate-prompt only shows on mobile-width screens held in portrait
+        (see the CSS media query) asking the visitor to turn the phone
+        sideways — it's a request, not a true lock (see home.css comment
+        for why a hard orientation lock isn't realistic on the mobile web).
+
+      IF YOU CHANGE THE ROOM ART:
+        1. Update the #room-base <img> src to the new file.
+        2. If the canvas size changes, update each <area coords> and the
+           .room-hover-art clip-path rectangles in home.css.
+           Current art: room_base.png (4032x3024).
+    -->
+    <div class="home-stage">
+
+      <div class="room" id="room">
+        <div class="room-canvas" id="room-canvas">
+
+          <!-- Sharp room illustration -->
+          <img
+            id="room-base"
+            class="room-base"
+            src="assets/room/room_base.png"
+            alt="An illustrated bedroom. Hover or tap objects to explore: the desk opens Projects, the bed opens About, and the CONTACT book on the shelf opens Contact."
+            usemap="#roommap"
+          />
+
+          <!-- Fairy lights, layered on top of the base art so this copy can
+               carry a twinkle animation independently. -->
+          <img class="room-overlay room-lights" src="assets/room/lights.png" alt="" aria-hidden="true" />
+
+          <!-- Per-hotspot hover art — one finished image (shape + label
+               already drawn together), clipped to each hotspot's rectangle. -->
+          <img class="room-overlay room-hotspot-art room-hover-art" data-hotspot="computer" src="assets/room/hover-art.png" alt="" aria-hidden="true" />
+          <img class="room-overlay room-hotspot-art room-hover-art" data-hotspot="contact" src="assets/room/hover-art.png" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- Clickable / focusable regions, in the art's natural pixels (4032x3024).
+             room.js rescales these to the displayed size automatically.
+             computer + contact coords were traced from hover-art.png;
+             bed is unchanged (no new art to re-trace it from yet). -->
+        <map name="roommap">
+          <area class="hotspot" data-hotspot="computer" shape="rect" coords="50,2250,1195,3024" href="design.html" alt="Projects — open my portfolio (design work, then web projects)" />
+          <area class="hotspot" data-hotspot="bed" shape="rect" coords="870,1800,3480,2970" href="about.html" alt="About Me — learn about Del" />
+          <area class="hotspot" data-hotspot="contact" shape="rect" coords="3610,275,3705,580" href="contact.html" alt="Contact — get in touch (the CONTACT book on the shelf)" />
+        </map>
+      </div>
+
+      <!-- Mobile-only hint -->
+      <p class="swipe-hint" aria-hidden="true">&larr; swipe to look around the room &rarr;</p>
+    </div>
+
+    <!-- Mobile-portrait-only "please rotate" overlay — see home.css for why
+         this is a polite ask rather than a forced/locked rotation. -->
+    <div id="rotate-prompt" aria-hidden="true">
+      <div class="rotate-prompt-icon">&#128241;</div>
+      <p>For the best experience, turn your phone sideways.</p>
+    </div>
+
+    <!-- Fallback text nav: crawlable links + keyboard/screen-reader access. -->
+    <nav class="room-fallback-nav" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="design.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Background music — click-to-play only (browsers block audio-with-
+         sound autoplay anyway, and a silent surprise is a bad first
+         impression). Starts paused; js/music.js toggles it and swaps the
+         icon. If assets/audio/theme-song.mp3 is missing, music.js hides
+         this button instead of leaving a dead control on the page.
+         DROP THE TRACK IN: assets/audio/theme-song.mp3 (mp3, looping-friendly
+         — no long silence/fade at the start or end works best for a loop). -->
+    <button id="music-toggle" class="music-toggle" type="button" aria-pressed="false" aria-label="Play background music">
+      <svg class="music-icon-note" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+      <svg class="music-icon-bars" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="4" y="10" width="3" height="6"><animate attributeName="height" values="6;14;6" dur="0.9s" repeatCount="indefinite" /><animate attributeName="y" values="10;6;10" dur="0.9s" repeatCount="indefinite" /></rect><rect x="10.5" y="4" width="3" height="16"><animate attributeName="height" values="16;8;16" dur="0.9s" begin="0.15s" repeatCount="indefinite" /><animate attributeName="y" values="4;8;4" dur="0.9s" begin="0.15s" repeatCount="indefinite" /></rect><rect x="17" y="8" width="3" height="10"><animate attributeName="height" values="10;16;10" dur="0.9s" begin="0.3s" repeatCount="indefinite" /><animate attributeName="y" values="8;4;8" dur="0.9s" begin="0.3s" repeatCount="indefinite" /></rect></svg>
+    </button>
+    <audio id="bg-music" src="assets/audio/theme-song.mp3" loop preload="none"></audio>
+  </main>
+
+  <script src="js/room.js"></script>
+  <script src="js/music.js"></script>
+</body>
+</html>

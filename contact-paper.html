@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Del Beanlands</title>
+  <meta name="description" content="Get in touch with Del Beanlands for design work, collaborations, and inquiries." />
+  <link rel="icon" href="assets/img/favicon.png" />
+  <link rel="stylesheet" href="css/contact-paper.css" />
+</head>
+<!-- MOCKUP · fullscreen open, bound journal on the desk. -->
+<body class="contact-paper">
+
+  <!-- SVG filter that gives the paper its torn/ragged outer edges.
+       Applied to the book's ::before (paper layer) only, so the text
+       stays perfectly crisp. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="paper-tear" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.016" numOctaves="3" seed="8" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="11" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+  <a class="paper-back" href="index.html" title="Back to the room" aria-label="Back to the room">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    the room
+  </a>
+
+  <main class="desk">
+    <div class="book">
+      <div class="pages">
+
+        <!-- Left page: the note -->
+        <section class="page left">
+          <p class="paper-kicker">Say hello</p>
+          <h1 class="paper-title">Contact</h1>
+          <p class="paper-tagline">Let&rsquo;s be creative and make good things together!</p>
+
+          <ul class="paper-lines">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              <a href="mailto:deljinder025@gmail.com">deljinder025@gmail.com</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              <span>Delta, BC</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2.2"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 17v-7" stroke-linecap="round"/></svg>
+              <a href="#" rel="noopener">LinkedIn</a>
+            </li>
+          </ul>
+
+          <p class="paper-sign">&mdash; Del</p>
+        </section>
+
+        <!-- Right page: the form -->
+        <section class="page right">
+          <h2 class="paper-formhead">Leave a note</h2>
+
+          <!-- HUBSPOT: on build, these fields map to a HubSpot form and submit
+               via their API so the paper styling stays intact. -->
+          <form class="paper-form" onsubmit="return false;">
+            <div class="paper-field">
+              <label for="pName">Name</label>
+              <input id="pName" type="text" placeholder="Your name" autocomplete="name" />
+            </div>
+            <div class="paper-field">
+              <label for="pEmail">Email</label>
+              <input id="pEmail" type="email" placeholder="you@studio.com" autocomplete="email" />
+            </div>
+            <div class="paper-field">
+              <label for="pMsg">Message</label>
+              <textarea id="pMsg" placeholder="Tell me about it&hellip;"></textarea>
+            </div>
+            <button class="paper-send" type="submit">
+              Send it
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </form>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
