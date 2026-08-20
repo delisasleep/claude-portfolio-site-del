@@ -92,6 +92,29 @@ body.vscode {
 .tb-right { display: flex; align-items: center; flex: 1; justify-content: flex-end; height: 100%; }
 .tb-layout { display: flex; gap: 12px; padding-right: 12px; color: var(--vsc-muted); }
 .tb-layout svg { width: 17px; height: 17px; }
+
+/* Notification bell — mirrors Illustrator's .ai-bell (same icon/badge
+   pattern, recolored for this theme). Toggles the "Illustrator has an
+   update" toast; also auto-opens it once, ~15s after landing on the page.
+   Behavior lives in js/notify.js (shared with the Illustrator pages). */
+.vsc-bell { position: relative; width: 40px; height: 100%; display: inline-flex; align-items: center; justify-content: center; background: none; border: 0; color: var(--vsc-muted); cursor: pointer; flex: 0 0 auto; }
+.vsc-bell:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.vsc-bell svg { width: 16px; height: 16px; }
+.vsc-bell-badge {
+  position: absolute; top: 3px; right: 4px;
+  min-width: 14px; height: 14px; padding: 0 3px; box-sizing: border-box;
+  border-radius: 7px; background: #e5484d; color: #fff;
+  font-size: 9px; font-weight: 700; line-height: 14px; text-align: center;
+  box-shadow: 0 0 0 1.5px var(--vsc-chrome);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .vsc-bell-badge { animation: vsc-bell-pulse 2.4s ease-in-out infinite; }
+}
+@keyframes vsc-bell-pulse {
+  0%, 100%  { transform: scale(1);    box-shadow: 0 0 0 1.5px var(--vsc-chrome), 0 0 0 rgba(229, 72, 77, 0.6); }
+  50%       { transform: scale(1.16); box-shadow: 0 0 0 1.5px var(--vsc-chrome), 0 0 10px 3px rgba(229, 72, 77, 0.85); }
+}
+
 .win-controls { display: flex; height: 100%; }
 .wc { width: 46px; height: 100%; display: flex; align-items: center; justify-content: center; background: none; border: 0; color: var(--vsc-text); }
 .wc svg { width: 11px; height: 11px; }
@@ -235,7 +258,7 @@ body.vscode {
 /* Tech-stack pills: a second, separate row of .case-tag pills below the
    bio text, labeled to distinguish "what tools built this" from the
    thematic tags above it. */
-.tech-tags-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--vsc-faint); margin: 0 0 8px; }
+.tech-tags-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--vsc-faint); margin: 18px 0 8px; }
 
 .case-actions { display: flex; gap: 14px; flex-wrap: wrap; margin: 0 0 34px; }
 .case-btn { font-family: var(--hand); font-size: 17px; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 1px solid var(--vsc-border); color: var(--vsc-text); transition: border-color 0.15s, background 0.15s; }
@@ -255,45 +278,73 @@ body.vscode {
 .vsc-statusbar .right { margin-left: auto; display: flex; gap: 14px; }
 
 /* ============================================================
-   Illustrator "dock/taskbar" app icon — hops for attention like a
-   Windows app with a pending update, and links back to the design
-   page. Pure CSS; markup lives at the bottom of web_projects.html.
+   "Illustrator has an update" system toast
+   ------------------------------------------------------------
+   The VS Code-side mirror of the .sys-toast in css/illustrator.css —
+   same generic "fake OS notification" chrome (deliberately NOT styled
+   like the VS Code UI, same as the Illustrator side isn't styled like
+   Illustrator), surfaces ~15s after landing on a VS Code-themed page,
+   toggled by .vsc-bell. Replaces the old hopping .ai-dock icon — the
+   notification now lives inside the bell instead of floating loose.
+   Behavior lives in js/notify.js.
    ============================================================ */
-.ai-dock {
+.sys-toast {
   position: fixed;
-  left: 24px;
-  bottom: 40px;              /* clears the 22px status bar */
-  width: 46px; height: 46px;
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none;
-  z-index: 9998;
-  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.5));
-  animation: ai-dock-hop 2.8s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+  right: 20px;
+  bottom: 20px;
+  width: 360px;
+  max-width: calc(100vw - 40px);
+  background: #2b2b2b;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.4);
+  font-family: var(--ui);
+  z-index: 9999;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(24px) translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.ai-dock-icon {
-  width: 46px; height: 46px;
-  display: flex; align-items: center; justify-content: center;
-  background: #310e00; border: 1.5px solid #7a3d00; border-radius: 11px;
-  color: #ff9a2e; font-weight: 800; font-size: 20px; letter-spacing: -0.5px;
-}
-.ai-dock:hover .ai-dock-icon { border-color: #ff9a2e; }
-.ai-dock-badge {
-  position: absolute; top: -3px; right: -3px;
-  width: 14px; height: 14px; border-radius: 50%;
-  background: #e5484d; box-shadow: 0 0 0 2px var(--vsc-editor);
-}
+.sys-toast.show { opacity: 1; transform: translateX(0) translateY(0); pointer-events: auto; }
+.sys-toast.hide { opacity: 0; transform: translateX(24px) translateY(8px); pointer-events: none; }
 
-/* Bounce twice, then rest for the remainder of the cycle (dock-style). */
-@keyframes ai-dock-hop {
-  0%   { transform: translateY(0); }
-  8%   { transform: translateY(-16px); }
-  16%  { transform: translateY(0); }
-  22%  { transform: translateY(-7px); }
-  28%  { transform: translateY(0); }
-  100% { transform: translateY(0); }
+.sys-toast-head { display: flex; align-items: center; gap: 8px; padding: 8px 10px 4px 14px; }
+.sys-toast-app { font-size: 11.5px; color: #cfcfcf; }
+.sys-toast-dismiss {
+  margin-left: auto; width: 22px; height: 22px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: none; border: 0; border-radius: 4px; color: #b8b8b8; cursor: pointer;
 }
+.sys-toast-dismiss:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.sys-toast-dismiss svg { width: 10px; height: 10px; }
+
+.sys-toast-body {
+  display: flex; gap: 12px; padding: 2px 14px 12px;
+  text-decoration: none; color: inherit; cursor: pointer;
+}
+.sys-toast-icon { flex: 0 0 44px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #310e00; border: 1.5px solid #7a3d00; border-radius: 11px; color: #ff9a2e; font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+.sys-toast-text { min-width: 0; }
+.sys-toast-title { display: block; font-size: 14px; font-weight: 600; margin: 0 0 3px; color: #fff; }
+.sys-toast-msg { display: block; font-size: 12.5px; line-height: 1.45; color: #c8c8c8; margin: 0; }
+.sys-toast-time { display: block; font-size: 11px; color: #8f8f8f; margin-top: 6px; }
+
+.sys-toast-actions { display: flex; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+.sys-toast-btn {
+  flex: 1; padding: 10px 12px; background: none; border: 0;
+  color: #7cc0ff; font-family: var(--ui); font-size: 13px;
+  text-align: center; text-decoration: none; cursor: pointer;
+}
+.sys-toast-btn.primary { font-weight: 600; }
+.sys-toast-btn:hover { background: rgba(255, 255, 255, 0.06); }
+.sys-toast-btn + .sys-toast-btn { border-left: 1px solid rgba(255, 255, 255, 0.08); }
+
 @media (prefers-reduced-motion: reduce) {
-  .ai-dock { animation: none; }
+  .sys-toast, .sys-toast.show, .sys-toast.hide { transition: opacity 0.2s linear; transform: none; }
+}
+@media (max-width: 480px) {
+  .sys-toast { right: 12px; left: 12px; bottom: 12px; width: auto; }
 }
 
 /* ---- Responsive ---- */

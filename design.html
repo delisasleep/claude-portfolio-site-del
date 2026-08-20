@@ -32,7 +32,7 @@
       </nav>
       <!-- Notification bell: re-opens the "VS Code has updated" popup on demand
            (e.g. after it's been dismissed). Badge hints an update is waiting. -->
-      <button class="ai-bell" id="vscBell" type="button" title="1 update available" aria-label="Notifications: 1 update available">
+      <button class="ai-bell notify-bell" id="vscBell" type="button" title="1 update available" aria-label="Notifications: 1 update available">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
         <span class="ai-bell-badge" aria-hidden="true">1</span>
       </button>
@@ -261,11 +261,11 @@
        aria-hidden; the update itself is a real, labelled link.
        Styles live in css/illustrator.css (.sys-toast*).
        ============================================================ -->
-  <div class="sys-toast" id="vscodeUpdateToast" role="alertdialog"
+  <div class="sys-toast notify-toast" id="vscodeUpdateToast" data-delay="15000" role="alertdialog"
        aria-labelledby="vscToastTitle" aria-describedby="vscToastMsg" aria-hidden="true">
     <div class="sys-toast-head">
       <span class="sys-toast-app" aria-hidden="true">Visual Studio Code</span>
-      <button class="sys-toast-dismiss" type="button" id="vscToastDismiss" aria-label="Dismiss notification">
+      <button class="sys-toast-dismiss notify-dismiss" type="button" id="vscToastDismiss" aria-label="Dismiss notification">
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 3l6 6M9 3l-6 6"/></svg>
       </button>
     </div>
@@ -293,46 +293,11 @@
 
     <div class="sys-toast-actions">
       <a class="sys-toast-btn primary" href="web_projects.html">Restart to Update</a>
-      <button class="sys-toast-btn" type="button" id="vscToastLater">Later</button>
+      <button class="sys-toast-btn notify-later" type="button" id="vscToastLater">Later</button>
     </div>
   </div>
 
-  <script>
-    (function () {
-      var toast = document.getElementById('vscodeUpdateToast');
-      if (!toast) return;
-
-      var DELAY = 10000; // ~10 seconds on the page before the update surfaces
-
-      function showToast() {
-        toast.classList.remove('hide');
-        toast.classList.add('show');
-        toast.setAttribute('aria-hidden', 'false');
-      }
-      function hideToast() {
-        toast.classList.remove('show');
-        toast.classList.add('hide');
-        toast.setAttribute('aria-hidden', 'true');
-      }
-      function toggleToast() {
-        if (toast.classList.contains('show')) hideToast();
-        else showToast();
-      }
-
-      setTimeout(showToast, DELAY);
-
-      var bell = document.getElementById('vscBell');
-      var dismiss = document.getElementById('vscToastDismiss');
-      var later = document.getElementById('vscToastLater');
-      if (bell) bell.addEventListener('click', toggleToast);
-      if (dismiss) dismiss.addEventListener('click', hideToast);
-      if (later) later.addEventListener('click', hideToast);
-
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && toast.classList.contains('show')) hideToast();
-      });
-    })();
-  </script>
+  <script src="js/notify.js"></script>
 
   <script>
     /* "All Projects" layer filtering — toggle a category's visibility. */

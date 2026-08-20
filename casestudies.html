@@ -30,6 +30,12 @@
       <nav class="ai-menu" aria-label="Menu">
         <span>File</span><span>Edit</span><span>Object</span><span>Type</span><span>Select</span><span>Effect</span><span>View</span><span>Window</span><span>Help</span>
       </nav>
+      <!-- Notification bell: re-opens the "VS Code has updated" popup on demand
+           (e.g. after it's been dismissed). Badge hints an update is waiting. -->
+      <button class="ai-bell notify-bell" id="vscBell" type="button" title="1 update available" aria-label="Notifications: 1 update available">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+        <span class="ai-bell-badge" aria-hidden="true">1</span>
+      </button>
       <div class="ai-winctrls" aria-hidden="true">
         <button class="ai-wc" tabindex="-1" aria-label="Minimize"><svg viewBox="0 0 12 12"><rect x="2" y="5.5" width="8" height="1" fill="currentColor"/></svg></button>
         <button class="ai-wc" tabindex="-1" aria-label="Maximize"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"><rect x="2.5" y="2.5" width="7" height="7"/></svg></button>
@@ -168,6 +174,51 @@
 
   </div>
 
+  <!-- ============================================================
+       Mock Windows "VS Code has updated" system notification.
+       Surfaces ~15s after landing on this page and, when clicked,
+       carries the visitor into the VS Code web section. Decorative
+       chrome (app name, icon, timestamp) is aria-hidden; the update
+       itself is a real, labelled link. Styles live in
+       css/illustrator.css (.sys-toast*), behavior in js/notify.js.
+       ============================================================ -->
+  <div class="sys-toast notify-toast" id="vscodeUpdateToast" data-delay="15000" role="alertdialog"
+       aria-labelledby="vscToastTitle" aria-describedby="vscToastMsg" aria-hidden="true">
+    <div class="sys-toast-head">
+      <span class="sys-toast-app" aria-hidden="true">Visual Studio Code</span>
+      <button class="sys-toast-dismiss notify-dismiss" type="button" id="vscToastDismiss" aria-label="Dismiss notification">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 3l6 6M9 3l-6 6"/></svg>
+      </button>
+    </div>
+
+    <a class="sys-toast-body" href="web_projects.html">
+      <span class="sys-toast-icon" aria-hidden="true">
+        <!-- VS Code logo -->
+        <svg viewBox="0 0 254 254" xmlns="http://www.w3.org/2000/svg">
+          <mask id="vscMask2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="254" height="254">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M180.828 252.605c3.998 1.557 8.556 1.457 12.596-.493l50.716-24.394A17.007 17.007 0 0 0 253.75 212.4V41.598a17.007 17.007 0 0 0-9.61-15.318L193.424 1.887c-5.298-2.552-11.52-1.927-16.181 1.567a16.99 16.99 0 0 0-2.045 1.837L77.612 94.63 34.699 62.058a11.342 11.342 0 0 0-14.485.643L6.649 75.011c-4.526 4.117-4.531 11.25-.01 15.373L43.869 124 6.639 157.616c-4.521 4.123-4.516 11.256.01 15.373l13.565 12.31a11.342 11.342 0 0 0 14.485.643l42.913-32.572 97.586 89.339a16.98 16.98 0 0 0 5.13 3.296l.5.2Zm10.647-183.756L117.362 124l74.113 55.151V68.849Z" fill="#fff"/>
+          </mask>
+          <g mask="url(#vscMask2)">
+            <path d="M244.14 26.28L193.377 1.85C187.5-.98 180.474.213 175.855 4.832L6.582 159.157c-4.526 4.123-4.52 11.256.01 15.373l13.565 12.31a11.342 11.342 0 0 0 14.485.643L238.987 32.61c6.837-5.19 16.648-.315 16.648 8.267v-.601a17.006 17.006 0 0 0-11.495-13.997Z" fill="#0065A9"/>
+            <path d="M244.14 227.72l-50.763 24.43c-5.877 2.83-12.903 1.637-17.522-2.982L6.582 94.844c-4.526-4.124-4.52-11.257.01-15.374l13.565-12.31a11.342 11.342 0 0 1 14.485-.643L238.987 221.39c6.837 5.19 16.648.315 16.648-8.267v.601a17.006 17.006 0 0 1-11.495 13.997Z" fill="#007ACC"/>
+            <path d="M193.379 252.152c-5.878 2.828-12.904 1.635-17.523-2.985 5.688 5.689 15.42 1.662 15.42-6.383V11.216c0-8.045-9.732-12.072-15.42-6.384 4.619-4.62 11.645-5.812 17.523-2.984l50.755 24.4a17.007 17.007 0 0 1 9.622 15.335v170.804a17.007 17.007 0 0 1-9.622 15.334l-50.755 24.431Z" fill="#1F9CF0"/>
+          </g>
+        </svg>
+      </span>
+      <span class="sys-toast-text">
+        <span class="sys-toast-title" id="vscToastTitle">VS Code has updated</span>
+        <span class="sys-toast-msg" id="vscToastMsg">A new version is ready. Restart to see what&rsquo;s new &mdash; now with web projects.</span>
+        <span class="sys-toast-time" aria-hidden="true">now</span>
+      </span>
+    </a>
+
+    <div class="sys-toast-actions">
+      <a class="sys-toast-btn primary" href="web_projects.html">Restart to Update</a>
+      <button class="sys-toast-btn notify-later" type="button" id="vscToastLater">Later</button>
+    </div>
+  </div>
+
   <script src="js/casestudies.js"></script>
+  <script src="js/notify.js"></script>
 </body>
 </html>

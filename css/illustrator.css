@@ -66,7 +66,10 @@ body.ai-app {
 @media (prefers-reduced-motion: no-preference) {
   .ai-bell-badge { animation: ai-bell-pulse 2.4s ease-in-out infinite; }
 }
-@keyframes ai-bell-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.16); } }
+@keyframes ai-bell-pulse {
+  0%, 100%  { transform: scale(1);    box-shadow: 0 0 0 1.5px var(--ai-menubar), 0 0 0 rgba(229, 72, 77, 0.6); }
+  50%       { transform: scale(1.16); box-shadow: 0 0 0 1.5px var(--ai-menubar), 0 0 10px 3px rgba(229, 72, 77, 0.85); }
+}
 
 /* ---- Control / breadcrumb bar ---- */
 .ai-controlbar { background: var(--ai-chrome); display: flex; align-items: center; gap: 14px; padding: 0 12px; border-bottom: 1px solid var(--ai-line); }
