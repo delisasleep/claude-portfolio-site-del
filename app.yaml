@@ -1,0 +1,9 @@
+name: claude-portfolio-site-del
+static_sites:
+  - name: portfolio
+    github:
+      repo: delisasleep/claude-portfolio-site-del
+      branch: main
+      deploy_on_push: true
+    source_dir: /
+    index_document: index.html
