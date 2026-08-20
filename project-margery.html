@@ -67,7 +67,7 @@
         </div>
         <!-- Notification bell: mirrors Illustrator's — re-opens the
              "Illustrator has an update" popup on demand. -->
-        <button class="vsc-bell notify-bell" id="illustratorBell" type="button" title="1 notification" aria-label="Notifications: 1 notification">
+        <button class="vsc-bell notify-bell" id="mailBell" type="button" title="1 new message" aria-label="Notifications: 1 new message">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
           <span class="vsc-bell-badge" aria-hidden="true">1</span>
         </button>
@@ -212,33 +212,35 @@
   </div>
 
   <!-- ============================================================
-       Mock "Illustrator has an update" system notification — the VS
-       Code-side mirror of design.html's "VS Code has updated" toast.
-       Surfaces ~15s after landing on this page; also reopenable from
-       the bell in the title bar. Styles in css/vscode.css (.sys-toast*,
-       shared "fake OS notification" chrome), behavior in js/notify.js.
+       Mock "Mail" app notification — nudges the visitor toward the
+       contact page. Surfaces ~15s after landing on this page; also
+       reopenable from the bell in the title bar. Styles in
+       css/vscode.css (.sys-toast*, .mail-icon), behavior in
+       js/notify.js.
        ============================================================ -->
-  <div class="sys-toast notify-toast" id="illustratorUpdateToast" data-delay="15000" role="alertdialog"
-       aria-labelledby="aiToastTitle" aria-describedby="aiToastMsg" aria-hidden="true">
+  <div class="sys-toast notify-toast" id="mailToast" data-delay="15000" role="alertdialog"
+       aria-labelledby="mailToastTitle" aria-describedby="mailToastMsg" aria-hidden="true">
     <div class="sys-toast-head">
-      <span class="sys-toast-app" aria-hidden="true">Adobe Illustrator</span>
-      <button class="sys-toast-dismiss notify-dismiss" type="button" id="aiToastDismiss" aria-label="Dismiss notification">
+      <span class="sys-toast-app" aria-hidden="true">Mail</span>
+      <button class="sys-toast-dismiss notify-dismiss" type="button" id="mailToastDismiss" aria-label="Dismiss notification">
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 3l6 6M9 3l-6 6"/></svg>
       </button>
     </div>
 
-    <a class="sys-toast-body" href="design.html">
-      <span class="sys-toast-icon" aria-hidden="true">Ai</span>
+    <a class="sys-toast-body" href="contact.html">
+      <span class="sys-toast-icon mail-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+      </span>
       <span class="sys-toast-text">
-        <span class="sys-toast-title" id="aiToastTitle">Illustrator has an update</span>
-        <span class="sys-toast-msg" id="aiToastMsg">New design work and case studies are up &mdash; come take a look.</span>
+        <span class="sys-toast-title" id="mailToastTitle">New message</span>
+        <span class="sys-toast-msg" id="mailToastMsg">Someone&rsquo;s trying to reach you &mdash; check your inbox.</span>
         <span class="sys-toast-time" aria-hidden="true">now</span>
       </span>
     </a>
 
     <div class="sys-toast-actions">
-      <a class="sys-toast-btn primary" href="design.html">Open Illustrator</a>
-      <button class="sys-toast-btn notify-later" type="button" id="aiToastLater">Later</button>
+      <a class="sys-toast-btn primary" href="contact.html">Open Mail</a>
+      <button class="sys-toast-btn notify-later" type="button" id="mailToastLater">Later</button>
     </div>
   </div>
 

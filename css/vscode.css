@@ -325,6 +325,10 @@ body.vscode {
   text-decoration: none; color: inherit; cursor: pointer;
 }
 .sys-toast-icon { flex: 0 0 44px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #310e00; border: 1.5px solid #7a3d00; border-radius: 11px; color: #ff9a2e; font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+/* Mail-app flavor of the icon box, used by the "New message" toast that
+   nudges toward the contact page. */
+.sys-toast-icon.mail-icon { background: #2f6fed; border-color: #1c4fc0; color: #fff; }
+.sys-toast-icon.mail-icon svg { width: 22px; height: 22px; }
 .sys-toast-text { min-width: 0; }
 .sys-toast-title { display: block; font-size: 14px; font-weight: 600; margin: 0 0 3px; color: #fff; }
 .sys-toast-msg { display: block; font-size: 12.5px; line-height: 1.45; color: #c8c8c8; margin: 0; }
